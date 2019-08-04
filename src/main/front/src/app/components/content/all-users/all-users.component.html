@@ -1,0 +1,21 @@
+<div class="container text-center">
+  <h1>Users will be there</h1>
+  <table class="table table-hover table-striped">
+    <thead>
+    <tr>
+      <th>Id</th>
+      <th>Fullname</th>
+      <th>Email</th>
+      <th>CreatedDate</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr *ngFor="let user of users">
+      <td>{{user.id}}</td>
+      <td>{{user.fullname}}</td>
+      <td>{{user.email}}</td>
+      <td>{{getNormalDate(user.createdDate)}}</td>
+    </tr>
+    </tbody>
+  </table>
+</div>
