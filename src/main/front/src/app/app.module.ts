@@ -10,7 +10,7 @@ import { NavbarComponent } from './components/navbar/navbar.component';
 import { ContentComponent } from './components/content/content.component';
 import { AllUsersComponent } from './components/content/all-users/all-users.component';
 import {NewUserComponent} from "./components/content/new-user/new-user.component";
-
+import { ReactiveFormsModule } from '@angular/forms';
 
 const appRoutes: Routes = [
   { path: 'users/allUsers', component: AllUsersComponent },
@@ -31,7 +31,8 @@ const appRoutes: Routes = [
     AppRoutingModule,
     FormsModule,
     HttpClientModule,
-    RouterModule.forRoot(appRoutes)
+    RouterModule.forRoot(appRoutes),
+    ReactiveFormsModule
   ],
   providers: [],
   bootstrap: [AppComponent]
