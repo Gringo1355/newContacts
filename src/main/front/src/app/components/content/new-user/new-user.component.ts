@@ -1,7 +1,9 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnDestroy, OnInit} from '@angular/core';
 import {FormBuilder, FormControl, FormGroup, Validators} from "@angular/forms";
 import {UserHttpService} from "../../../service/user-http.service";
 import User from "../../../model/User";
+import {DataExchangeService} from "../../../service/data-exchange.service";
+import {Subscription} from "rxjs";
 
 @Component({
   selector: 'app-new-user',
@@ -11,7 +13,11 @@ import User from "../../../model/User";
 export class NewUserComponent implements OnInit {
   createUserForm: FormGroup;
   createdUser: User;
-  constructor(private fb: FormBuilder, private userHttpService: UserHttpService) { }
+  id:number;
+  subscription: Subscription;
+  constructor(private fb: FormBuilder,
+              private userHttpService: UserHttpService,
+              private dataExchangeService: DataExchangeService) { }
 
   ngOnInit() {
     this.initForm();
@@ -42,5 +48,4 @@ export class NewUserComponent implements OnInit {
 
      this.userHttpService.createUser(this.createUserForm.value).subscribe(data => this.createdUser = data)
   }
-
 }

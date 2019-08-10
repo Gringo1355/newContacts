@@ -11,12 +11,10 @@ import { ContentComponent } from './components/content/content.component';
 import { AllUsersComponent } from './components/content/all-users/all-users.component';
 import {NewUserComponent} from "./components/content/new-user/new-user.component";
 import { ReactiveFormsModule } from '@angular/forms';
+import { UserWiewComponent } from './components/content/user-wiew/user-wiew.component';
 
-const appRoutes: Routes = [
-  { path: 'users/allUsers', component: AllUsersComponent },
-  { path: 'users/addNew', component: NewUserComponent },
-  { path: '', component: AllUsersComponent }
-];
+
+
 
 @NgModule({
   declarations: [
@@ -24,14 +22,14 @@ const appRoutes: Routes = [
     NavbarComponent,
     ContentComponent,
     AllUsersComponent,
-    NewUserComponent
+    NewUserComponent,
+    UserWiewComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     FormsModule,
     HttpClientModule,
-    RouterModule.forRoot(appRoutes),
     ReactiveFormsModule
   ],
   providers: [],

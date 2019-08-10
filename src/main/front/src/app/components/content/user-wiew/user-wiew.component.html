@@ -1,0 +1,12 @@
+<div class="text-center">
+    <div class="card container text-center" style="width: 18rem;">
+    <div class="card-body">
+      <div class="card-title">{{user.fullname}}</div>
+      <div>Email - {{user.email}}</div>
+      <div>Created - {{getNormalDate(user.createdDate)}}</div>
+    </div>
+  </div>
+  <div class="container">
+    <button (click)="goBack()" class="btn btn-dark">Back</button>
+  </div>
+</div>
