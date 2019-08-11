@@ -15,8 +15,10 @@ export class UserWiewComponent implements OnInit {
               private userHttp : UserHttpService,
               private location: Location) { }
 
-  private user: User;
-  private id: number = this.route.snapshot.params.id;
+
+  public user: User;
+  private id: number = this.route.snapshot.params['userId'];
+
   getUserById(){
     return this.userHttp.getUserById(this.id).subscribe(data => this.user = data);
   }
@@ -33,4 +35,8 @@ export class UserWiewComponent implements OnInit {
     this.getUserById();
   }
 
+  deleteUser() {
+     this.userHttp.deleteUserById(this.id).subscribe();
+     this.goBack();
+  }
 }

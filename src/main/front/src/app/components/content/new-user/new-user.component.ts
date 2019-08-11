@@ -2,6 +2,11 @@ import {Component, OnDestroy, OnInit} from '@angular/core';
 import {FormBuilder, FormControl, FormGroup, Validators} from "@angular/forms";
 import {UserHttpService} from "../../../service/user-http.service";
 import User from "../../../model/User";
+import {Subscription} from "rxjs";
+import {Location} from "@angular/common";
+import {FormBuilder, FormControl, FormGroup, Validators} from "@angular/forms";
+import {UserHttpService} from "../../../service/user-http.service";
+import User from "../../../model/User";
 import {DataExchangeService} from "../../../service/data-exchange.service";
 import {Subscription} from "rxjs";
 
@@ -17,6 +22,7 @@ export class NewUserComponent implements OnInit {
   subscription: Subscription;
   constructor(private fb: FormBuilder,
               private userHttpService: UserHttpService,
+              private location: Location,
               private dataExchangeService: DataExchangeService) { }
 
   ngOnInit() {
@@ -27,6 +33,10 @@ export class NewUserComponent implements OnInit {
       fullName:new FormControl('', Validators.required),
       email:new FormControl('', [Validators.required, Validators.email])
     })
+  }
+
+  goBack(){
+    this.location.back();
   }
 
   isControlInvalid(controlName: string): boolean {
@@ -46,6 +56,9 @@ export class NewUserComponent implements OnInit {
       return;
     }
 
-     this.userHttpService.createUser(this.createUserForm.value).subscribe(data => this.createdUser = data)
+     this.userHttpService.createUser(this.createUserForm.value).subscribe(data => {
+       this.createdUser = data;
+       this.goBack();
+     })
   }
 }

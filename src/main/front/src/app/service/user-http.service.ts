@@ -21,4 +21,9 @@ export class UserHttpService {
   getUserById(id: number):Observable<User>{
     return this.httpClient.get<User>("api/getUser/" + id);
   }
+
+  deleteUserById(id: number){
+    return this.httpClient.delete("api/deleteUser/" + id);
+  }
+
 }
