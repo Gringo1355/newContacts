@@ -23,7 +23,6 @@ export class UserHttpService {
   }
 
   deleteUserById(id: number){
-    return this.httpClient.delete("api/deleteUser/" + id);
+    return this.httpClient.delete<User>("api/deleteUser/" + id);
   }
-
 }
