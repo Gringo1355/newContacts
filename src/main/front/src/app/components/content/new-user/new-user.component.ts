@@ -1,9 +1,14 @@
-import {Component, OnInit} from '@angular/core';
+import {Component, OnDestroy, OnInit} from '@angular/core';
 import {FormBuilder, FormControl, FormGroup, Validators} from "@angular/forms";
 import {UserHttpService} from "../../../service/user-http.service";
 import User from "../../../model/User";
 import {Subscription} from "rxjs";
 import {Location} from "@angular/common";
+import {FormBuilder, FormControl, FormGroup, Validators} from "@angular/forms";
+import {UserHttpService} from "../../../service/user-http.service";
+import User from "../../../model/User";
+import {DataExchangeService} from "../../../service/data-exchange.service";
+import {Subscription} from "rxjs";
 
 @Component({
   selector: 'app-new-user',
@@ -17,7 +22,8 @@ export class NewUserComponent implements OnInit {
   subscription: Subscription;
   constructor(private fb: FormBuilder,
               private userHttpService: UserHttpService,
-              private location: Location) { }
+              private location: Location,
+              private dataExchangeService: DataExchangeService) { }
 
   ngOnInit() {
     this.initForm();

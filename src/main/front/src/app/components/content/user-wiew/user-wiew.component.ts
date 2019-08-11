@@ -1,9 +1,8 @@
 import { Component, OnInit } from '@angular/core';
-import {ActivatedRoute, ParamMap} from "@angular/router";
+import {ActivatedRoute} from "@angular/router";
 import User from "../../../model/User";
 import {UserHttpService} from "../../../service/user-http.service";
 import {formatDate, Location} from "@angular/common";
-
 
 @Component({
   selector: 'app-user-wiew',
@@ -16,8 +15,10 @@ export class UserWiewComponent implements OnInit {
               private userHttp : UserHttpService,
               private location: Location) { }
 
+
   public user: User;
   private id: number = this.route.snapshot.params['userId'];
+
   getUserById(){
     return this.userHttp.getUserById(this.id).subscribe(data => this.user = data);
   }
@@ -37,6 +38,5 @@ export class UserWiewComponent implements OnInit {
   deleteUser() {
      this.userHttp.deleteUserById(this.id).subscribe();
      this.goBack();
-
   }
 }
