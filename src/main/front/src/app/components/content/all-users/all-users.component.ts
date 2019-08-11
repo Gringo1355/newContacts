@@ -3,6 +3,7 @@ import User from "../../../model/User";
 import {formatDate} from "@angular/common";
 import {HttpClient} from "@angular/common/http";
 import {UserHttpService} from "../../../service/user-http.service";
+import {DataExchangeService} from "../../../service/data-exchange.service";
 
 @Component({
   selector: 'app-all-users',

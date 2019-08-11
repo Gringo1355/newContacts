@@ -17,4 +17,12 @@ export class UserHttpService {
   createUser(body):Observable<User>{
     return this.httpClient.post<User>("/api/addUser", body);
   }
+
+  getUserById(id: number):Observable<User>{
+    return this.httpClient.get<User>("api/getUser/" + id);
+  }
+
+  deleteUserById(id: number){
+    return this.httpClient.delete("api/deleteUser/" + id);
+  }
 }
